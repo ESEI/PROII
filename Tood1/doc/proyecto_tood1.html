@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+    <title>Proyecto</title>
+  </head>
+  <body style="color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+    <h1 style="text-align: center; background-color: #006600; color: white;">Proyecto
+      <span style="font-style: italic;">Tood </span></h1>
+    <h2><span style="color: #006600;">Introducci&#243;n</span></h2>
+    <div style="text-align: justify;">El proyecto <em>Tood</em> es un esqueleto
+      de programa que se utilizar&#225; durante todo el curso para realizar
+      ejercicios sobre &#233;l, practicando cuestiones que necesiten ser
+      reforzadas.</div>
+    <div style="text-align: justify;">El proyecto se distribuye como archivo <span
+        style="font-style: italic;">*.zip</span>, en el que se encuentran los
+      archivos <span style="font-style: italic;">*.java</span> necesarios para
+      el proyecto en s&#237;, as&#237; como las carpetas <em>.idea</em> y <em>nbproject</em>,
+      que permiten abrir el proyecto en <strong>IntelliJ IDEA</strong> y <strong>Netbeans</strong>,
+      respectivamente. En la carpeta <em>doc/</em> se encuentra el enunciado
+      del proyecto, mientras que en la subcarpeta <span style="font-style: italic;">doc/html/</span>,
+      reside la documentaci&#243;n (<em>JavaDoc</em>) del proyecto tal y como se
+      entrega.<br>
+    <h2><span style="color: #006600;">Objetivo del programa</span></h2>
+    El objetivo del programa consiste en guardar tareas a realizar, permitir
+    modificarlas y marcarlas como terminadas. Por ejemplo, en un momento dado un
+    listado de tareas podr&#237;a ser el siguiente:<br>
+  <pre>1. [ ] Limpiar la casa</pre>
+  <pre>2. [X] Hacer la compra</pre>
+  <pre>3. [ ] Estudiar PRO2</pre>
+</div>
+<h2><span style="color: #006600;">Dise&#241;o de la aplicaci&#243;n</span></h2>
+<p>La clase <strong>Bloc</strong> es la principal de la l&#243;gica de negocio,
+  guardando una colecci&#243;n de tareas. La clase <strong>Tarea</strong>
+  guarda toda la informaci&#243;n sobre las tareas a realizar, mientras que <strong>Ilc</strong>
+  se encarga de la interfaz del programa.</p>
+<div style="text-align: center;"><img longdesc="Tood1" title="Tood1" alt="Tood1"
+    src="tood1.png"></div>
+<h2><span style="color: #006600;">Ejercicios</span></h2>
+<ol style="text-align: justify;">
+  <li>Modifica el m&#233;todo <strong>Ilc.</strong><em>menu()</em>, de manera
+    que visualice el n&#250;mero de entradas presentes en el <strong>Bloc</strong>,
+    as&#237; como el n&#250;mero de entradas m&#225;ximo.</li>
+  <li>Crea el m&#233;todo <span style="font-style: italic;">toString()</span>
+    en la clase <strong>Bloc</strong>, de tal manera que recorra mediante un
+    bucle todo el vector de tareas, y, llamando al m&#233;todo <span style="font-style: italic;">toString()</span>
+    de cada entrada, devuelva una cadena con toda la informaci&#243;n. Modifica
+    <span style="font-weight: bold;">Ilc</span>.<em>leb()</em>, de tal manera
+    que utilice el nuevo m&#233;todo <strong>Bloc</strong><span style="font-style: italic;">.toString()</span>.
+  </li>
+  <li>A&#241;ade el atributo <em>prioridad</em> a la clase <strong>Tarea</strong>.
+    Los posibles valores ser&#225;n BAJA, NORMAL, y ALTA.</li>
+  <li>El m&#233;todo <em>elimina()</em> est&#225; vac&#237;o en este momento.
+    Compl&#233;talo para que realmente funcione.</li>
+  <li>En varios m&#233;todos (como en <em>inserta()</em>) se hacen
+    comprobaciones de error, y en caso de que se produzca una situaci&#243;n
+    excepcional se muestra un mensaje en la consola de errores, terminando a
+    continuaci&#243;n el programa. Sustituye este comportamiento por un sistema
+    de excepciones.</li>
+</ol>
+<h2><span style="color: #006600;">Referencia r&#225;pida</span></h2>
+<ul>
+  <li><a target="_blank" title="Java Docs" style="color: #006600;" href="http://docs.oracle.com/javase/8/docs/api/">Documentaci&#243;n
+      oficial de Java</a> </li>
+</ul>
+<h1 style="text-align: center; background-color: #006600;"><span style="font-style: italic;"><small
+      style="color: white;"><small>PROII - Pr&#225;ctica 1</small></small> </span></h1>
+</body>
+</html>
