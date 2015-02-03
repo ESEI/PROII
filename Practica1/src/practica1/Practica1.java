@@ -22,16 +22,8 @@ public class Practica1 {
                     + p1.calculaDistanciaOrigen() );
         //Ejercicio 2
         Correo UnCorreo = new Correo("Gonzalez Fernandez", "Uxio","uxiogonzalez","hotmail.com");
-        System.out.println (UnCorreo.getApellidos());
-        System.out.println (UnCorreo.getNombre());
-        System.out.println (UnCorreo.getUsuario());
-        System.out.println (UnCorreo.getServidor());
         System.out.println (UnCorreo.ToString());  
         Correo Correo2 = new Correo("Gonzalez Fernandez","Jose Eugenio");
-        System.out.println (Correo2.getApellidos());
-        System.out.println (Correo2.getNombre());
-        System.out.println (Correo2.getUsuario());
-        System.out.println (Correo2.getServidor());
         System.out.println (Correo2.ToString());  
         //Ejercicio 3
         Personas yo = new Personas("Gonzalez Fernandez", "Jose Eugenio", 53111974);
