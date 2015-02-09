@@ -52,7 +52,7 @@ public class Articulo {
     
 //To String
     /** @return info del objeto como una cadena */
-    public String ToString(){
+    public String toString(){
         //formateo del importe para que salga con el formato de moneda
         NumberFormat formatoImporte = NumberFormat.getCurrencyInstance();
         //formatoImporte = NumberFormat.getCurrencyInstance(new Locale("es","ES"));

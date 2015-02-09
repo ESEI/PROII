@@ -24,7 +24,7 @@ public class Poligonos {
     }
 // ToString
     /** @return info del objeto como una cadena */
-    public String ToString(){
+    public String toString(){
         return "Poligono de lados: " +numLados;
     }
     

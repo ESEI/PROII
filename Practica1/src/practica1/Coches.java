@@ -66,7 +66,7 @@ public class Coches {
         }
     //ToString
         /** @return info del objeto como una cadena */
-        public String ToString(){
+        public String toString(){
             return marca + " " + modelo + " (" + TIPOCOCHE[(tipo-1)] + ", " + cv + "CV): puertas: " + nPuertas + ", capacidad: " + capacidad;
         }
 }

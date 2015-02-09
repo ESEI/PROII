@@ -1,16 +1,10 @@
-/*
- * Ejercicio 2
- */
 package practica1;
-
-import java.time.Clock;
-
 /**
  *
  * @author uxio
  */
 public class Correo {
-    /** Declaración de variables de la clase*/
+    /** DeclaraciÃ³n de variables de la clase*/
     private String apellidos;
     private String nombre;
     private String usuario;
@@ -84,7 +78,7 @@ public class Correo {
     //SETTERS
     
     /** @return el info del objeto como una cadena */
-    public String ToString(){
+    public String toString(){
         return (apellidos+","+nombre+": "+usuario+"@"+servidor);
     }
 }

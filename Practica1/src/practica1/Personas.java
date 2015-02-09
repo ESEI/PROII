@@ -41,7 +41,7 @@ public class Personas {
     }
     //ToString
     /** @return info del objeto como una cadena */
-    public String ToString(){
+    public String toString(){
         return (""+ dni+CalculaLetra(dni)+ " - " + apellidos + ","+nombre);
     }
     

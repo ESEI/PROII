@@ -1,40 +1,33 @@
-/*
- * Ejercicio 7
- */
 package practica1;
 
 /**
  *
- * @author uxi
+ * @author jgfernandez4
  */
 public class Alumno {
-    /** Declaración de variables de la clase*/    
+    /** DeclaraciÃ³n de variables de la clase*/    
+    //public enum Notas {SUSPENSO, APROBADO, NOTABLE, SOBRESALIENTE, MATRICULA};
+    public enum Notas {BLOQUE1, BLOQUE2, BLOQUE3, PRACTICAS};
     private int dni;
     private String apellidos;
     private String nombre;
-    private double nota1=0;
-    private double nota2=0;
-    private double nota3=0;
-    private double practicas=0;
+    //private Notas nota;
+    private double[] tNota;
+    //int tamano=Notas.values().length;
+    
+   
     
     //Constructor
     /** Construye un objeto Alumno a partir de los parametros de entrada
     * @param xDni DNI del alumno
     * @param xNombre Nombre del alumno
     * @param xApellidos Apellidos del alumno
-    * @param xNota1 Nota 1
-    * @param xNota2 Nota 2
-    * @param xNota3 Nota 3
-    * @param xPracticas Nota de practicas
     */
-    public Alumno (int xDni, String xNombre, String xApellidos, double xNota1, double xNota2, double xNota3, double xPracticas){
+    public Alumno (int xDni, String xNombre, String xApellidos){
         dni=xDni;
         apellidos = xApellidos;
         nombre = xNombre;
-        nota1 = xNota1;
-        nota2 = xNota2;
-        nota3 = xNota3;
-        practicas = xPracticas;
+        tNota = new double[Notas.values().length];
     }
     
     /** Construye un objeto Alumno a partir de los parametros de entrada
@@ -42,11 +35,11 @@ public class Alumno {
     * @param xNombre Nombre del alumno
     * @param xApellidos Apellidos del alumno
     */
-    public Alumno (int xDni, String xNombre, String xApellidos){
+    /*public Alumno (int xDni, String xNombre, String xApellidos){
         dni = xDni;
         apellidos = xApellidos;
         nombre = xNombre;
-    }
+    }*/
 
     //GETTERS
     /** @return el DNI del alumno */
@@ -65,49 +58,23 @@ public class Alumno {
     }
     
     /** @return la nota 1 del alummno */
-    public double getNota1(){
+    /*public double getNota(){
         return nota1;
-    }
+    }*/
     
-    /** @return la nota 2 del alummno */
-    public double getNota2(){
-        return nota2;
-    }
-    
-    /** @return la nota 3 del alummno */
-    public double getNota3(){
-        return nota3;
-    }
-    
-    /** @return la nota de practicas del alummno */
-    public double getPracticas(){
-        return practicas;
-    }
     //SETTERS
     /** Establece la nota 1 del alumno */
-    public void setNota1(double nota){
-        nota1 = nota;
+    public void setNota(Notas xtNota,double valor ){
+        tNota[xtNota.ordinal()] = valor;
     }
-    
-    /** Establece la nota 2 del alumno */
-    public void setNota2(double nota){
-        nota2 = nota;
-    }
-    
-    /** Establece la nota 3 del alumno */
-    public void setNota3(double nota){
-        nota3 = nota;
-    }
-    
-    /** Establece la nota de practicas del alumno */
-    public void setPracticas(double nota){
-        practicas = nota;
-    }
+       
     //ToString
     /** @return info del objeto como una cadena */
-    public String ToString(){
-        return "" + dni + CalculaLetra(dni) + " - " + apellidos + ", " + nombre + ": " + nota1 +", " + nota2 + ", " + nota3 +", " + practicas;
+    public String toString(){
+        return "" + dni + CalculaLetra(dni) +"\n";
     }
+        //return "" + Integer.toString(dni)  + CalculaLetra(dni) + " - " + apellidos + ", " + nombre + ": " + nota1 +", " + nota2 + ", " + nota3 +", " + practicas;
+    
     
     /** Calcula la letra del DNI
      * @param numero el DNI sin letra
@@ -121,8 +88,8 @@ public class Alumno {
     /** Crea el informe BOLETIN
      * @return el boletin con los datos del alumno
      */
-    public String Boletin(){
-        String cadena = "-------\n"+
+    /*public String Boletin(){
+       String cadena = "-------\n"+
                         "BOLETIN\n" + 
                         "-------\n" +
                 dni + CalculaLetra(dni) + " " + apellidos + ", " + nombre +
@@ -133,13 +100,14 @@ public class Alumno {
              "\nPRACTICAS: " + practicas + " - " + devuelveNota(practicas) + " --------------   FINAL: " + (practicas*0.55)+
              "\n------------------------------------------------" + 
              "\n                         TOTAL : " + ((nota1*0.15)+(nota2*0.15)+(nota3*0.15)+(practicas*0.55)) + " - " + devuelveNota((nota1*0.15)+(nota2*0.15)+(nota3*0.15)+(practicas*0.55)) + " -";
-        return cadena;
+        return cadena;*/
     }
     
      /** devuelve la nota como cadena de texto a partir del numero
       * @param num la nota en numero
       * @return la nota en formato texto
       */
+    /*
     public String devuelveNota(double num){
         String texto="";
         if (num <5){
@@ -153,4 +121,4 @@ public class Alumno {
         }
         return texto;
     }
-}
+}*/
