@@ -1,6 +1,6 @@
 package practica1;
 /**
- *
+ * Ejercicio 2 CORREGIDO y OPTIMIZADO
  * @author uxio
  */
 public class Correo {
@@ -20,8 +20,8 @@ public class Correo {
     {
         apellidos=apel;
         nombre=nom;
-        usuario=user;
-        servidor=serv;
+        usuario=user.toLowerCase();
+        servidor=serv.toLowerCase();
     }
     
     /** Construye un objeto Correo a partir de dos parametros de entrada
@@ -32,25 +32,31 @@ public class Correo {
     {
         apellidos=apel;
         nombre=nom;
-        usuario=creausuario(apel,nom);
+        usuario=creausuario(apel,nom).toLowerCase();
         servidor  ="esei.uvigo.es";
         
     }
     
     /** Devuelve una cadena para la formacion del usuario cuando no se 
     * le pasa usuario y servidor
-    * @param ap apellidos
-    * @param no nombre
+    * @param ap apellidos del usuario
+    * @param no nombre del usuario
     * @return cadena formada con el primer apellido y la inicial del nombre
     */
     private String creausuario(String ap, String no){
-        String apellido1="";
+        /*String apellido1;
+        //Metodo 1:
         if (ap.contains(" ")){
             apellido1=ap.subSequence(0, ap.indexOf(" ")).toString();
         }else{
             apellido1=ap;
         }
-        return (apellido1+no.charAt(0));
+        return (apellido1+(no.charAt(0)) );
+        */
+        //Metodo 2:
+        //utilizando split:
+        String apellido2[] = ap.split(" ");
+        return (apellido2[0]+no.charAt(0));
     }
     
     //GETTERS

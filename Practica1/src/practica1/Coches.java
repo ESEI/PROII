@@ -4,7 +4,7 @@
 package practica1;
 
 /**
- *
+ * Ejercicio 5 OPTIMIZADO
  * @author uxio
  */
 public class Coches {

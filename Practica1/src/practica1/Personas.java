@@ -50,9 +50,9 @@ public class Personas {
     * @return la letra del DNI
     */
     private char CalculaLetra(int numero){
-        String Cadena="TRWAGNYFPDXBNJZSQVHLCKE";
-        return (Cadena.charAt(numero%23));
+        String cadena="TRWAGNYFPDXBNJZSQVHLCKE";
+        return (cadena.charAt(numero%23));
         //para devolver una cadena:
-        //return Character.toString(Cadena.charAt(numero%23));
+        //return Character.toString(cadena.charAt(nuºmero%23));
     }
 }

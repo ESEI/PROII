@@ -40,10 +40,13 @@ public class Practica1 {
         System.out.println(nuevoArt.toString());
         //Ejercicio 7
         Alumno alum1 = new Alumno(53111974,"Jose Eugenio", "Gonzalez Fernandez");
-        //alum1.setNota(Notas.BLOQUE1, 5.2);
+        alum1.setNota(Alumno.Notas.BLOQUE1, 5.2);
+        alum1.setNota(Alumno.Notas.BLOQUE2, 7.2);
+        alum1.setNota(Alumno.Notas.BLOQUE3 , 8.2);
+        alum1.setNota(Alumno.Notas.PRACTICAS, 4.2);
         
-        System.out.println(alum1.toString());
-        //System.out.println(alum1.Boletin());
+        System.out.println(alum1.Boletin());
+        
     }
     
 }
