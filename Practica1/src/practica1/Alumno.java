@@ -11,12 +11,8 @@ public class Alumno {
     private int dni;
     private String apellidos;
     private String nombre;
-    //private Notas nota;
     private double[] tNota;
-    //int tamano=Notas.values().length;
-    
-   
-   
+
     //Constructor
     /** Construye un objeto Alumno a partir de los parametros de entrada
     * @param xDni DNI del alumno
@@ -30,17 +26,6 @@ public class Alumno {
         tNota = new double[Notas.values().length];
     }
     
-    /** Construye un objeto Alumno a partir de los parametros de entrada
-    * @param xDni DNI del alumno
-    * @param xNombre Nombre del alumno
-    * @param xApellidos Apellidos del alumno
-    */
-    /*public Alumno (int xDni, String xNombre, String xApellidos){
-        dni = xDni;
-        apellidos = xApellidos;
-        nombre = xNombre;
-    }*/
-
     //GETTERS
     /** @return el DNI del alumno */
     public int getDni(){
@@ -57,25 +42,23 @@ public class Alumno {
         return nombre;
     }
     
-    /** @return la nota 1 del alummno */
-    /*public double getNota(){
-        return nota1;
-    }*/
+    /** @return la nota del alummno */
+    public double getNota(Notas subNota){
+        return tNota[subNota.ordinal()];
+    }
     
     //SETTERS
-    /** Establece la nota 1 del alumno */
+    /** Establece la nota del alumno */
     public void setNota(Notas xtNota,double valor ){
         tNota[xtNota.ordinal()] = valor;
     }
        
-    //ToString
+    //toString
     /** @return info del objeto como una cadena */
     public String toString(){
-        return "" + dni + CalculaLetra(dni) +"\n";
+        return "" + dni + CalculaLetra(dni) + " - " + apellidos + ", " + nombre + ": " + tNota[Notas.BLOQUE1.ordinal()] +", " + tNota[Notas.BLOQUE2.ordinal()] + ", " + tNota[Notas.BLOQUE3.ordinal()] +", " + tNota[Notas.PRACTICAS.ordinal()];
     }
-        //return "" + Integer.toString(dni)  + CalculaLetra(dni) + " - " + apellidos + ", " + nombre + ": " + nota1 +", " + nota2 + ", " + nota3 +", " + practicas;
-    
-    
+     
     /** Calcula la letra del DNI
      * @param numero el DNI sin letra
      * @return la letra del DNI
