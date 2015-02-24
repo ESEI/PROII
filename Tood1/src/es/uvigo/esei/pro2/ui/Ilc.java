@@ -25,9 +25,9 @@ public class Ilc {
 
         // Bucle ppal
         do {
-            System.out.println( "Tood" );
+            System.out.println( "----\n" + "Tood");
 
-            op = menu();
+            op = menu(bloc);
 
             switch( op ) {
                 case 0:
@@ -46,10 +46,16 @@ public class Ilc {
                     bloc.get( leeNumTarea( bloc ) ).setCompletada();
                     break;
                 case 5:
-                    for(int i = 0; i < bloc.getNumTareas(); ++i) {
+                    /*for(int i = 0; i < bloc.getNumTareas(); ++i) {
                         System.out.println( bloc.get( i ).toString() );
                     }
+                    */
+                    System.out.println( bloc.toString() );
                     break;
+                /*case 6:
+                    System.out.println(bloc.toString());
+                    break;     
+                */
                 default:
                     System.out.println( "No es correcto: " + op );
             }
@@ -60,15 +66,20 @@ public class Ilc {
 
     /**
      * Presenta un menu con las opciones, y permite seleccionar una.
+     * @param numTareas Numero de entradas
+     * @param maxTareas numero maximo de tareas
      * @return la opcion seleccionada, como entero
      */
-    private int menu()
+    private int menu(Bloc bloc)
     {
         int toret;
 
         do {
-            System.out.println(
-                              "1. Inserta nueva tarea\n"
+            System.out.println("-------------------------\n"
+                            + "Nº de entradas : " + bloc.getNumTareas() + "\n"
+                            + "Nº de entradas maximo : " + bloc.getMaxTareas() + "\n"
+                            + "-------------------------\n"
+                            + "1. Inserta nueva tarea\n"
                             + "2. Modifica tarea\n"
                             + "3. Elimina tarea\n"
                             + "4. Marcar tarea como completada\n"
@@ -126,6 +137,26 @@ public class Ilc {
         if ( info.length() > 0 ) {
             t.setCompletada( info.charAt( 0 ) == 'S' );
         }
+        
+        // Prioridades
+        System.out.print( "Prioridad (");
+        String[] p=t.getPrioridades();
+        //for (String pri: t.getPrioridades()){
+        for (int i = 0; i < p.length;i++){    
+            System.out.print("["+(i+1)+"]"+p[i].charAt(0)+ p[i].substring(1).toLowerCase()+ ((i+1>=p.length)? ")":", "));
+        }
+        System.out.print( "[" + t.getPrioridad() + "]: ");
+        try
+        {
+           
+            info = entrada.nextLine().trim();
+            if ((info.length()>0) && ((Integer.parseInt(info)>0)||(Integer.parseInt(info)<4))){        
+                t.setPrioridad(Integer.parseInt(info));
+            }
+        }
+        catch (Exception ex){
+            //System.out.println("ERROR: " + ex.getMessage());
+        }
     }
 
     /**
@@ -140,10 +171,10 @@ public class Ilc {
 
         do {
             toret = leeNum( "Introduzca num. de tarea (1..." + numTareas + "): " );
-        } while( toret < 0
-              && toret >= numTareas );
+        } while(( toret <= 0)
+              || (toret > numTareas) );
 
-        return toret - 1;
+        return toret-1;
     }
 
     /**

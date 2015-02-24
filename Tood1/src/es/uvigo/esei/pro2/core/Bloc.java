@@ -24,11 +24,16 @@ public class Bloc {
      */
     public Tarea get(int pos)
     {
-        if ( pos >= getNumTareas() ) {
-            System.err.println( "get(): sobrepasa la pos: " + ( pos + 1 ) + " / " + getMaxTareas() );
-            System.exit( -1 );
+        try{
+            if ( pos > getNumTareas() ) {
+            //System.err.println( "get(): sobrepasa la pos: " + ( pos + 1 ) + " / " + getMaxTareas() );
+            //System.exit( -1 );
+                throw new Exception ("get(): sobrepasa la pos: " + ( pos + 1 ) + " / " + getMaxTareas());
+            }       
         }
-
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
         return tareas[ pos ];
     }
 
@@ -54,32 +59,61 @@ public class Bloc {
     public void inserta(Tarea t)
     {
         final int maxTareas = getMaxTareas();
+        try{
+            if ( getNumTareas() >= maxTareas ) {
+                /*System.err.println( "inserta(): sobrepasa max.: " + maxTareas );
+                System.exit( -1 );*/
+                throw new Exception ("No se pueden insertar más tareas");
+            }
 
-        if ( getNumTareas() >= maxTareas ) {
-            System.err.println( "inserta(): sobrepasa max.: " + maxTareas );
-            System.exit( -1 );
+            tareas[ num ] = t;
+            ++num;
         }
-
-        tareas[ num ] = t;
-        ++num;
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     public void borra(int pos)
     {
         final int numTareas = getNumTareas();
-
+    try {
         if ( pos >= numTareas ) {
-            System.err.println( "borra(): sobrepasa el max.: " + numTareas );
-            System.exit( -1 );
+            /*System.err.println( "borra(): sobrepasa el max.: " + numTareas );
+            System.exit( -1 );*/
+            throw new Exception ("Posición fuera de rango");
         }
 
         //...
-
-        return;
+        for (int posicion = pos; posicion < getNumTareas(); posicion++){
+            tareas[posicion]= tareas[posicion+1];
+        }
+        num -=1;
+    }
+    catch (Exception ex){
+        System.out.println(ex.getMessage());
+    }
+    
+    //    return;
     }
 
     public String toString()
     {
-        return "";
+        //String toret = "";
+        StringBuilder sb = new StringBuilder ("");
+        
+        try{
+            if (this.getNumTareas()<1){
+                throw new Exception ("Todavia no se ha introducido ninguna tarea.");
+            }
+            for (int i =0; i< num;i++){
+                sb.append(tareas[i].toString() + ((i+1>=num)? "":"\n"));
+                //toret += tareas[i].toString() + ((i+1>=num)? "":"\n");
+            }
+        }
+        catch (Exception ex){
+            sb.append(ex.getMessage());
+        }
+        return sb.toString();
     }
 }
