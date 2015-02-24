@@ -18,8 +18,10 @@ public class Ilc {
         int op;
 
         // Lee el num. max. de tareas
-        int maxTareas = leeNum( "Num. max. tareas: " );
-
+        int maxTareas;
+        do{
+            maxTareas = leeNum( "Num. max. tareas: " );
+        } while (maxTareas <=0);
         // Prepara
         Bloc bloc = new Bloc( maxTareas );
 
@@ -37,25 +39,34 @@ public class Ilc {
                     insertaTarea( bloc );
                     break;
                 case 2:
-                    modificaTarea( bloc.get( leeNumTarea( bloc ) ) );
+                    if (bloc.getNumTareas()>0){
+                        modificaTarea( bloc.get( leeNumTarea( bloc ) ) );
+                    }else{
+                        System.out.println("No existen tareas para modificar.");
+                    }
                     break;
                 case 3:
-                    bloc.borra( leeNumTarea( bloc ) );
+                    if (bloc.getNumTareas()>0){
+                        bloc.borra( leeNumTarea( bloc ) );
+                    }else{
+                        System.out.println("No existen tareas para borrar.");
+                    }
                     break;
                 case 4:
-                    bloc.get( leeNumTarea( bloc ) ).setCompletada();
+                    if (bloc.getNumTareas()>0){
+                        bloc.get( leeNumTarea( bloc ) ).setCompletada();
+                    }else{
+                        System.out.println("No existen tareas para marcar como completadas.");
+                    }
                     break;
                 case 5:
-                    /*for(int i = 0; i < bloc.getNumTareas(); ++i) {
-                        System.out.println( bloc.get( i ).toString() );
-                    }
-                    */
                     System.out.println( bloc.toString() );
                     break;
-                /*case 6:
-                    System.out.println(bloc.toString());
-                    break;     
-                */
+                    /* //CODIGO ANTERIOR
+                    for(int i = 0; i < bloc.getNumTareas(); ++i) {
+                        System.out.println( bloc.get( i ).toString() );
+                    }
+                    */     
                 default:
                     System.out.println( "No es correcto: " + op );
             }
@@ -98,10 +109,13 @@ public class Ilc {
      */
     private void insertaTarea(Bloc bloc)
     {
-        Tarea t = new Tarea( "" );
-
-        modificaTarea( t );
-        bloc.inserta( t  );
+        if (bloc.getNumTareas()>= bloc.getMaxTareas()){
+            System.out.println("No se pueden insertar más tareas.");
+        }else{
+            Tarea t = new Tarea( "" );
+            modificaTarea( t );
+            bloc.inserta( t  );   
+        }
     }
 
     /**
@@ -139,19 +153,17 @@ public class Ilc {
         }
         
         // Prioridades
+        String[] p = t.getPrioridades();
         System.out.print( "Prioridad (");
-        String[] p=t.getPrioridades();
-        //for (String pri: t.getPrioridades()){
         for (int i = 0; i < p.length;i++){    
             System.out.print("["+(i+1)+"]"+p[i].charAt(0)+ p[i].substring(1).toLowerCase()+ ((i+1>=p.length)? ")":", "));
         }
         System.out.print( "[" + t.getPrioridad() + "]: ");
         try
-        {
-           
+        {        
             info = entrada.nextLine().trim();
-            if ((info.length()>0) && ((Integer.parseInt(info)>0)||(Integer.parseInt(info)<4))){        
-                t.setPrioridad(Integer.parseInt(info));
+            if ((info.length()>0) && ((Integer.parseInt(info)>0)||(Integer.parseInt(info)<=p.length))){        
+                t.setPrioridad(p[Integer.parseInt(info)-1]);
             }
         }
         catch (Exception ex){

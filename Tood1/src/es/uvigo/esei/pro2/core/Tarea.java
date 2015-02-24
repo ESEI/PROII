@@ -36,13 +36,12 @@ public class Tarea {
         return texto;
     }
     
-    /** Devuelve el contenido del enumerado
+    /** Devuelve el contenido del enumerado Prioridades
      * 
      * @return el contenido del enumerado, como array.
      */
     public String[] getPrioridades(){
         String[] toret = new String[Prioridades.values().length];
-        int i=0;
         for (Prioridades p: Prioridades.values()){
             toret[p.ordinal()]=p.toString();
         }
@@ -74,21 +73,10 @@ public class Tarea {
     }
     /** Establece la prioridad de la tarea
      * 
-     * @param myPrioridad el enumerado de la prioridad
+     * @param myPrioridad el nombre de la prioridad del enumerado, como string.
      */
-    public void setPrioridad(int myPrioridad){//Prioridades myPrioridad){
-        switch (myPrioridad){
-            case 1:
-                prioridad = Prioridades.valueOf("BAJA") ;
-                break;
-            case 2:
-                prioridad = Prioridades.valueOf("MEDIA") ;
-                break;
-            case 3:
-                prioridad = Prioridades.valueOf("ALTA") ;
-                break;
-        }
-        
+    public void setPrioridad(String MyPrioridad){
+        prioridad = Prioridades.valueOf(MyPrioridad);
     }
 
     /**

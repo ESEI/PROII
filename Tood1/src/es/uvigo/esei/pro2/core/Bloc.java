@@ -63,7 +63,7 @@ public class Bloc {
             if ( getNumTareas() >= maxTareas ) {
                 /*System.err.println( "inserta(): sobrepasa max.: " + maxTareas );
                 System.exit( -1 );*/
-                throw new Exception ("No se pueden insertar más tareas");
+                throw new Exception ("inserta(): sobrepasa max.: " + maxTareas);
             }
 
             tareas[ num ] = t;
@@ -81,13 +81,13 @@ public class Bloc {
         if ( pos >= numTareas ) {
             /*System.err.println( "borra(): sobrepasa el max.: " + numTareas );
             System.exit( -1 );*/
-            throw new Exception ("Posición fuera de rango");
+            throw new Exception ("borra(): sobrepasa el max.: " + numTareas);
         }
 
         //...
-        for (int posicion = pos; posicion < getNumTareas(); posicion++){
-            tareas[posicion]= tareas[posicion+1];
-        }
+            for (int posicion = pos; posicion < (getNumTareas()-1); posicion++){
+                tareas[posicion]= tareas[posicion+1];
+            }
         num -=1;
     }
     catch (Exception ex){
@@ -99,7 +99,6 @@ public class Bloc {
 
     public String toString()
     {
-        //String toret = "";
         StringBuilder sb = new StringBuilder ("");
         
         try{
@@ -108,7 +107,6 @@ public class Bloc {
             }
             for (int i =0; i< num;i++){
                 sb.append(tareas[i].toString() + ((i+1>=num)? "":"\n"));
-                //toret += tareas[i].toString() + ((i+1>=num)? "":"\n");
             }
         }
         catch (Exception ex){
