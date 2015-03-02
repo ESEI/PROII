@@ -13,7 +13,7 @@ public class Ilc {
     /**
      * Realiza el reparto de la funcionalidad
      */
-    public int leb() 
+    public void leb() 
     {
         int op;
 
@@ -68,7 +68,7 @@ public class Ilc {
         } 
         while( op != 0 );
 
-        return op;
+        return;
     }
 
     /**
