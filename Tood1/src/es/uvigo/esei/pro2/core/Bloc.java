@@ -22,18 +22,14 @@ public class Bloc {
      * @param pos el lugar de la tarea en el vector de tareas
      * @return el objeto Tarea correspondiente.
      */
-    public Tarea get(int pos)
+    public Tarea get(int pos)throws Exception
     {
-        try{
             if ( pos > getNumTareas() ) {
             //System.err.println( "get(): sobrepasa la pos: " + ( pos + 1 ) + " / " + getMaxTareas() );
             //System.exit( -1 );
-                throw new Exception ("get(): sobrepasa la pos: " + ( pos + 1 ) + " / " + getMaxTareas());
+                throw new Exception  ("ERROR: sobrepasa la pos: "+ (pos)+" / "+(getNumTareas()));
             }       
-        }
-        catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
+        
         return tareas[ pos ];
     }
 
@@ -56,48 +52,40 @@ public class Bloc {
     /** Inserta una nueva tarea
      * @param t la nueva Tarea
      */
-    public void inserta(Tarea t)
+    public void inserta(Tarea t) throws Exception
     {
         final int maxTareas = getMaxTareas();
-        try{
             if ( getNumTareas() >= maxTareas ) {
                 /*System.err.println( "inserta(): sobrepasa max.: " + maxTareas );
                 System.exit( -1 );*/
-                throw new Exception ("inserta(): sobrepasa max.: " + maxTareas);
+                //throw new Exception ("inserta(): sobrepasa max.: " + maxTareas);
+                throw new Exception  ("inserta(): sobrepasa max.: " + maxTareas);
             }
 
             tareas[ num ] = t;
             ++num;
-        }
-        catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
     }
 
-    public void borra(int pos)
+    public void borra(int pos) throws Exception
     {
         final int numTareas = getNumTareas();
-    try {
-        if ( pos >= numTareas ) {
+    
+        if ( pos > numTareas ) {
             /*System.err.println( "borra(): sobrepasa el max.: " + numTareas );
             System.exit( -1 );*/
-            throw new Exception ("borra(): sobrepasa el max.: " + numTareas);
+            
+             throw new Exception  ("borra(): sobrepasa el max.: " + numTareas);
         }
 
         //...
             for (int posicion = pos; posicion < (getNumTareas()-1); posicion++){
                 tareas[posicion]= tareas[posicion+1];
             }
-        num -=1;
-    }
-    catch (Exception ex){
-        System.out.println(ex.getMessage());
-    }
-    
+        num--;   
     //    return;
     }
 
-    public String toString()
+    public String toString() 
     {
         StringBuilder sb = new StringBuilder ("");
         

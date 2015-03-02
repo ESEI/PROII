@@ -13,7 +13,7 @@ public class Ilc {
     /**
      * Realiza el reparto de la funcionalidad
      */
-    public void leb()
+    public int leb() 
     {
         int op;
 
@@ -30,49 +30,45 @@ public class Ilc {
             System.out.println( "----\n" + "Tood");
 
             op = menu(bloc);
-
-            switch( op ) {
-                case 0:
-                    System.out.println( "Fin." );
-                    break;
-                case 1:
-                    insertaTarea( bloc );
-                    break;
-                case 2:
-                    if (bloc.getNumTareas()>0){
+            try{
+                switch( op ) {
+                    case 0:
+                        System.out.println( "Fin." );
+                        break;
+                    case 1:
+                        insertaTarea( bloc );
+                        break;
+                    case 2:
                         modificaTarea( bloc.get( leeNumTarea( bloc ) ) );
-                    }else{
-                        System.out.println("No existen tareas para modificar.");
-                    }
-                    break;
-                case 3:
-                    if (bloc.getNumTareas()>0){
+                        break;
+                    case 3:
                         bloc.borra( leeNumTarea( bloc ) );
-                    }else{
-                        System.out.println("No existen tareas para borrar.");
-                    }
-                    break;
-                case 4:
-                    if (bloc.getNumTareas()>0){
+                        break;
+                    case 4:
                         bloc.get( leeNumTarea( bloc ) ).setCompletada();
-                    }else{
-                        System.out.println("No existen tareas para marcar como completadas.");
-                    }
-                    break;
-                case 5:
-                    System.out.println( bloc.toString() );
-                    break;
-                    /* //CODIGO ANTERIOR
-                    for(int i = 0; i < bloc.getNumTareas(); ++i) {
-                        System.out.println( bloc.get( i ).toString() );
-                    }
-                    */     
-                default:
-                    System.out.println( "No es correcto: " + op );
+                        break;
+                    case 5:
+                        System.out.println( bloc.toString() );
+                        break;
+                        /* //CODIGO ANTERIOR
+                        for(int i = 0; i < bloc.getNumTareas(); ++i) {
+                            System.out.println( bloc.get( i ).toString() );
+                        }
+                        */     
+                    default:
+                        throw new Exception ( "No es correcto: " + op );
+                }
             }
-        } while( op != 0 );
+            catch (Exception exc){
+                System.err.println(exc.getMessage());
+            }
+            finally {
 
-        return;
+            }
+        } 
+        while( op != 0 );
+
+        return op;
     }
 
     /**
@@ -107,15 +103,16 @@ public class Ilc {
      *  Crea una nueva tarea y la inserta en el bloc.
      *  @param bloc El Bloc en el que insertar la tarea.
      */
-    private void insertaTarea(Bloc bloc)
+    private void insertaTarea(Bloc bloc) throws Exception
     {
         if (bloc.getNumTareas()>= bloc.getMaxTareas()){
-            System.out.println("No se pueden insertar más tareas.");
+            throw new Exception  ("No se pueden insertar más tareas.");
         }else{
             Tarea t = new Tarea( "" );
             modificaTarea( t );
             bloc.inserta( t  );   
         }
+
     }
 
     /**
@@ -176,11 +173,13 @@ public class Ilc {
      * @param bloc el Bloc, del que se obtiene el max.
      * @return el num. de tarea, como entero.
      */
-    private int leeNumTarea(Bloc bloc)
+    private int leeNumTarea(Bloc bloc) throws Exception
     {
         final int numTareas = bloc.getNumTareas();
         int toret;
-
+        if (numTareas<1){
+            throw new Exception  ("No hay tareas insertadas");
+        }
         do {
             toret = leeNum( "Introduzca num. de tarea (1..." + numTareas + "): " );
         } while(( toret <= 0)
