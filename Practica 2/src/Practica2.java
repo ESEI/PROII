@@ -90,19 +90,22 @@ public class Practica2 {
         
         
         
-        System.out.println("Ejercicio 4b:");
+        System.out.println("Ejercicio 4:");
         Ejercicio4_Polinomios p1 = new Ejercicio4_Polinomios(grados,coeficientes);
         //Ejercicio 4.1 con dos vectores
         System.out.println(p1);
         //Ejercicio 4.b con un vector
         System.out.println(p1.toString2());
         
+        //Ejercicio 4.c con clases
         //Ejercicio 4.c con dos clases
         Scanner entrada = new Scanner (System.in);
         int dato;
-        do{
+       
+         do{
             System.out.print("Introduzca el grado del polinomio: ");
             dato = entrada.nextInt();
+            
             try{
 
             Ejercicio4_c_Polinomios p2 = new Ejercicio4_c_Polinomios(dato+1);
@@ -121,7 +124,38 @@ public class Practica2 {
                 dato =-1;
             }
         } while (dato <0);
-       
+        
+        //Ejercicio 4.d con clases
+        entrada = new Scanner (System.in);
+        repite=true;
+   
+        
+        do{
+            System.out.print("Introduzca el numero de polinomios: ");
+            
+            try{
+            dato = Integer.parseInt(entrada.nextLine());
+         
+            Ejercicio4_d_Polinomios  p3 = new Ejercicio4_d_Polinomios(dato);
+
+            for(int i=0; i<p3.getNumPolinomios();i++){
+                p3.insertaPolinomio(i);
+            }
+            System.out.println(p3); //Muestra todos los polinomios introducidos
+            
+            System.out.println("La suma de los polinomios es: " + p3.suma());
+            
+            repite = false;
+            }
+            catch (NumberFormatException ex){
+                System.err.println("Error: Introduzca un valor numérico.\n"+ex.getMessage());
+            }
+            catch(Exception exc){
+                System.err.println(exc.getMessage());
+            }
+        } while (repite);
+        
+        
        
         
         //Ejercicio 3:
