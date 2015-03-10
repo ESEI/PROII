@@ -12,7 +12,10 @@ public class Ejercicio4_c_Polinomios {
     private Elemento[] elementos;
     private int num;
     
-    public  Ejercicio4_c_Polinomios(int gradoPolinomio){
+    public  Ejercicio4_c_Polinomios(int gradoPolinomio)throws Exception {
+         if(gradoPolinomio<0){
+            throw new Exception("El grado debe ser mayor que 0"); 
+        }
         elementos = new Elemento[gradoPolinomio];
         num=gradoPolinomio-1;
     }

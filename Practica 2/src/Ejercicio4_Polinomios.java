@@ -12,46 +12,11 @@ public class Ejercicio4_Polinomios {
       private int[] grado;
       private int[] coeficientes;
 
-    public Ejercicio4_Polinomios(){
-       int grado=0;
-       boolean repite;
-       int cont=0;
-       Scanner scan = new Scanner(System.in); 
-       //Pedimos el grado del polinomio
-       do {
-            repite = false;
-            System.out.print("Introduzca el grado del polinomio : ");
-
-            try {
-                grado = Integer.parseInt( scan.nextLine() );
-            } catch (NumberFormatException exc) {
-                repite = true;
-            }
-        } while( repite );
-       
-       //Iniciamos variables
-       this.grado=new int[grado+1];
-       this.coeficientes=new int[grado+1];
-       int aux=grado;
-       
-       //Iniciamos los grados      
-       for(int i=0; i<=grado;i++){
-           this.grado[i]=aux;
-           aux--;
-       }
-       
-       //Pedimos los coeficientes
-       do{
-           try{
-           System.out.print("Introduzca un coeficiente para el grado " + (grado - cont) + ": ");
-           this.coeficientes[cont]=scan.nextInt();
-           scan.nextLine();
-           cont++;
-           }
-           catch(NumberFormatException exc){
-               System.err.println("error, introducir solo valores numericos.");
-           }
-       }while(cont<=grado);
+    public Ejercicio4_Polinomios(int[] grado, int[] coeficientes){
+        this.grado= grado;
+        this.coeficientes= coeficientes;
+      
+     
     }
 
     /** Construye el polinomio

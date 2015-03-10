@@ -11,11 +11,11 @@
 import java.time.LocalTime;
 public class Ejercicio3_ProgramaRadio {
    
-    private LocalTime hora= LocalTime.MIN;
+    private  LocalTime hora= LocalTime.MIDNIGHT;
     public static long horaContador=0;
-    private long minutos;
-    private String titulo;
-    private String locutor;
+    private final long minutos;
+    private final String titulo;
+    private final String locutor;
 
     /** Constructor
      * 
